@@ -16,7 +16,7 @@ def run_oda_pipeline():
     # 2. Busca apenas 2026
     print("Buscando dados de 2026...")
     # O código de agravo para Acidente de Trabalho no SINAN via PySUS é "ACID"
-    arquivos = sinan.get_files(dis_code="ACID", year=2026)
+    arquivos = sinan.get_files(dis_code="ACGR", year=2026)
     
     if not arquivos:
         print("Nenhum arquivo de 2026 encontrado no servidor.")
