@@ -1,0 +1,5 @@
+pysus
+pandas
+google-cloud-storage
+fastparquet
+pyarrow
