@@ -13,8 +13,14 @@ def run_oda_pipeline():
     ANOS = range(2015, 2027) 
     
     print("Conectando ao SINAN...")
-    # CORREÇÃO: Chamando a classe SINAN dentro do módulo SINAN
+    # Chamando a classe SINAN dentro do módulo SINAN
     instancia_sinan = SINAN.SINAN() 
+    
+    # --- CORREÇÃO AQUI ---
+    # Carrega explicitamente os caminhos e metadados do FTP do DATASUS
+    print("Carregando estruturas de caminhos do DataSUS...")
+    instancia_sinan.load()
+    # ----------------------
     
     lista_dfs = []
     
@@ -43,6 +49,8 @@ def run_oda_pipeline():
                     df_filtrado['ANO_REFERENCIA'] = ano
                     lista_dfs.append(df_filtrado)
                     print(f"✅ {len(df_filtrado)} registros em {ano}.")
+                else:
+                    print(f"ℹ️ Nenhum registro para Alagoinhas em {ano}.")
             
         except Exception as e:
             print(f"❌ Erro no ano {ano}: {e}")
